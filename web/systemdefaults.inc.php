@@ -1172,6 +1172,12 @@ $auth["session_php"]["user_refresh_interval"] = 24*3600;  // seconds
 // browser of the sessions table.
 $auth["session_php"]["store_key_in_cookie"] = true;
 
+// By default, MRBS stores session data in its database. This is usually more reliable
+// than PHP's implementation. If for some reason you need PHP's default session handling,
+// you can uncomment this line in your local config:
+// $auth["session_php"]["session_handler"] = "native";
+
+
 // Normally, provided the server is running PHP 7.3 or above,  the session cookies
 // are issued with SameSite attribute of "Strict", unless the session type requires
 // "Lax", eg for CAS and Saml. However, this can be inconvenient for users who might
