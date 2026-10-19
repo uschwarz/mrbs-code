@@ -52,6 +52,12 @@ abstract class Session
    */
   protected function getSessionHandler()
   {
+    // If the admin wants native php session handling, they can have it.
+    if (isset($auth['session_php']['session_handler']) && $auth['session_php']['session_handler']=='native')
+    {
+      return new SessionHandler();
+    }
+
     // The sessions table was only created in Upgrade 56. We test for the schema version rather than the existence of
     // the table, because the table is renamed in later upgrades.
     if (db_schema_version(db()) < 56)
